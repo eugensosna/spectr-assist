@@ -113,7 +113,7 @@ export default function Auth() {
         return;
       }
       if (isSignUp) {
-        const redirectUrl = `${window.location.origin}/`;
+        const redirectUrl = 'https://bot.storymapper.io/';
         const {
           data,
           error
@@ -175,7 +175,7 @@ export default function Auth() {
     try {
       setIsLoading(true);
       setError(null);
-      const redirectUrl = `${window.location.origin}/`;
+      const redirectUrl = 'https://bot.storymapper.io/';
       const {
         data,
         error
