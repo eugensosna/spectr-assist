@@ -56,7 +56,7 @@ export default function Auth() {
         }
       } = await supabase.auth.getSession();
       if (session) {
-        navigate("/");
+        navigate("/", { replace: true });
       }
     };
     checkUser();
@@ -88,7 +88,7 @@ export default function Auth() {
             // Don't block sign-in if Bitrix24 fails
           }
         }
-        navigate("/");
+        navigate("/", { replace: true });
         toast({
           title: "Welcome!",
           description: "You have successfully signed in."
