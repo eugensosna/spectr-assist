@@ -61,49 +61,7 @@ export default function Auth() {
     };
     checkUser();
 
-    // Listen for auth changes
-  /*  const {
-      data: {
-        subscription
-      }
-    } = supabase.auth.onAuthStateChange(async (event, session) => {
-      if (event === 'SIGNED_IN' && session) {
-        // Create lead in Bitrix24 for Google sign-in ONLY for new users
-        if (session.user.app_metadata.provider === 'google') {
-          // Check if user was just created (within last 5 seconds = new registration)
-          const userCreatedAt = new Date(session.user.created_at).getTime();
-          const now = Date.now();
-          const isNewUser = (now - userCreatedAt) < 5000; // 5 seconds
-          
-          if (isNewUser) {
-            try {
-              const utmParamsStr = sessionStorage.getItem('utm_params');
-              const utmParams = utmParamsStr ? JSON.parse(utmParamsStr) : {};
-              await supabase.functions.invoke('create-bitrix-lead', {
-                body: {
-                  email: session.user.email,
-                  name: session.user.user_metadata?.full_name || session.user.user_metadata?.name,
-                  ...utmParams
-                }
-              });
-
-              // Clear UTM params after use
-              sessionStorage.removeItem('utm_params');
-            } catch (bitrixError) {
-              console.error('Failed to create CRM lead:', bitrixError);
-              // Don't block sign-in if Bitrix24 fails
-            }
-          }
-        }
-        navigate("/", { replace: true });
-        toast({
-          title: "Welcome!",
-          description: "You have successfully signed in."
-        });
-      }
-    });
-    return () => subscription.unsubscribe();
-  }, [navigate, toast]);*/
+    
   const handleEmailAuth = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
