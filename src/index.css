@@ -15,7 +15,7 @@ All colors MUST be HSL.
     --card: 0 0% 100%;
     --card-foreground: 215 25% 15%;
 
-    --popover: 210 15% 92%;
+    --popover: 210 20% 86%;
     --popover-foreground: 215 25% 15%;
 
     --primary: 179 100% 26%;
@@ -89,7 +89,7 @@ All colors MUST be HSL.
     --card: 215 25% 12%;
     --card-foreground: 210 40% 95%;
 
-    --popover: 215 25% 8%;
+    --popover: 215 28% 14%;
     --popover-foreground: 210 40% 95%;
 
     --primary: 179 100% 35%;
