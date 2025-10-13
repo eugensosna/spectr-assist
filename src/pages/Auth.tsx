@@ -62,7 +62,7 @@ export default function Auth() {
     checkUser();
 
     // Listen for auth changes
-    const {
+  /*  const {
       data: {
         subscription
       }
@@ -103,7 +103,7 @@ export default function Auth() {
       }
     });
     return () => subscription.unsubscribe();
-  }, [navigate, toast]);
+  }, [navigate, toast]);*/
   const handleEmailAuth = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
@@ -182,7 +182,7 @@ export default function Auth() {
     try {
       setIsLoading(true);
       setError(null);
-      const redirectUrl = 'https://bot.storymapper.io/';
+      const redirectUrl = '/';
       const {
         data,
         error
@@ -190,6 +190,7 @@ export default function Auth() {
         provider: 'google',
         options: {
           redirectTo: redirectUrl,
+          replace: true,
           skipBrowserRedirect: true
         }
       });
