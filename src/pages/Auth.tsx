@@ -60,8 +60,8 @@ export default function Auth() {
       }
     };
     checkUser();
+  }, [navigate]);
 
-    
   const handleEmailAuth = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
