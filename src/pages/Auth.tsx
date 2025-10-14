@@ -144,7 +144,8 @@ export default function Auth() {
       const { error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
-          redirectTo: redirectUrl
+          redirectTo: redirectUrl,
+          skipBrowserRedirect: false
         }
       });
       if (error) {
@@ -156,6 +157,7 @@ export default function Auth() {
         });
         setIsLoading(false);
       }
+      // If no error, Supabase will automatically redirect in the same tab
     } catch (err: any) {
       const message = err.message || 'An unexpected error occurred';
       setError(message);
