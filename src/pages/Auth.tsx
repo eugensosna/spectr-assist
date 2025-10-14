@@ -135,7 +135,7 @@ export default function Auth() {
       const { error } = await supabase.auth.signInWithOAuth({
         provider: "google",
         options: {
-          redirectTo: `${window.location.origin}/`,
+        //  redirectTo: `${window.location.origin}/`,
         },
       });
       
@@ -156,7 +156,7 @@ export default function Auth() {
         description: message,
       });
     } finally {
-      setIsLoading(false);
+      setIsLoading(true);
     }
   };
   return (
