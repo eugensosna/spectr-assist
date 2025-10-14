@@ -136,8 +136,14 @@ export default function Auth() {
         provider: "google",
         options: {
           redirectTo: redirectUrl,
+          skipBrowserRedirect: true,
+          queryParams: {
+            access_type: 'offline',
+            prompt: 'consent',
+          }
         },
       });
+      
       if (error) {
         setError(error.message);
         toast({
@@ -146,6 +152,9 @@ export default function Auth() {
           description: error.message,
         });
         setIsLoading(false);
+      } else {
+        // Manually redirect to avoid popup
+        window.location.href = redirectUrl;
       }
     } catch (err: any) {
       const message = err.message || "An unexpected error occurred";
