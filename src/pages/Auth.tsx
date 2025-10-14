@@ -52,7 +52,12 @@ export default function Auth() {
         data: { session },
       } = await supabase.auth.getSession();
       if (session) {
-        navigate("/", { replace: true });
+        // If this is an OAuth popup, close it
+        if (window.opener && !window.opener.closed) {
+          window.close();
+        } else {
+          navigate("/", { replace: true });
+        }
       }
     };
     checkUser();
