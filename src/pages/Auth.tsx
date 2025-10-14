@@ -140,15 +140,11 @@ export default function Auth() {
     try {
       setIsLoading(true);
       setError(null);
-      const redirectUrl = '/';
-      const {
-        data,
-        error
-      } = await supabase.auth.signInWithOAuth({
+      const redirectUrl = `${window.location.origin}/`;
+      const { error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
-          redirectTo: redirectUrl,
-          skipBrowserRedirect: true
+          redirectTo: redirectUrl
         }
       });
       if (error) {
@@ -158,17 +154,7 @@ export default function Auth() {
           title: "Authentication Error",
           description: error.message
         });
-      } else if (data?.url) {
-        const win = window.open(data.url, '_blank', 'noopener,noreferrer');
-        if (!win) {
-          const a = document.createElement('a');
-          a.href = data.url;
-          a.target = '_blank';
-          a.rel = 'noopener noreferrer';
-          document.body.appendChild(a);
-          a.click();
-          document.body.removeChild(a);
-        }
+        setIsLoading(false);
       }
     } catch (err: any) {
       const message = err.message || 'An unexpected error occurred';
@@ -178,7 +164,6 @@ export default function Auth() {
         title: "Error",
         description: message
       });
-    } finally {
       setIsLoading(false);
     }
   };
