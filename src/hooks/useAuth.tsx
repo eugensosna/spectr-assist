@@ -1,4 +1,4 @@
-import { useState, useEffect, createContext, useContext, ReactNode } from 'react';
+port { useState, useEffect, createContext, useContext, ReactNode } from 'react';
 import { User, Session } from '@supabase/supabase-js';
 import { supabase } from '@/integrations/supabase/client';
 
@@ -26,10 +26,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         
        
 
-        if (event === 'SIGNED_IN' && session) {
-                // Assuming '/' is your authenticated route and Auth.tsx is on '/login'
-                router.push('/'); 
-            }
+        
       }
     );
 
