@@ -131,16 +131,11 @@ export default function Auth() {
     try {
       setIsLoading(true);
       setError(null);
-      const redirectUrl = `${window.location.origin}/`;
+      
       const { error } = await supabase.auth.signInWithOAuth({
         provider: "google",
         options: {
-          redirectTo: redirectUrl,
-          skipBrowserRedirect: true,
-          queryParams: {
-            access_type: 'offline',
-            prompt: 'consent',
-          }
+          redirectTo: `${window.location.origin}/`,
         },
       });
       
@@ -151,10 +146,6 @@ export default function Auth() {
           title: "Authentication Error",
           description: error.message,
         });
-        setIsLoading(false);
-      } else {
-        // Manually redirect to avoid popup
-        window.location.href = redirectUrl;
       }
     } catch (err: any) {
       const message = err.message || "An unexpected error occurred";
@@ -164,6 +155,7 @@ export default function Auth() {
         title: "Error",
         description: message,
       });
+    } finally {
       setIsLoading(false);
     }
   };
