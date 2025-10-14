@@ -24,10 +24,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         setUser(session?.user ?? null);
         setLoading(false);
         
-        // Close OAuth popup if authentication was successful
-        if (event === 'SIGNED_IN' && session && window.opener && !window.opener.closed) {
-          window.close();
-        }
+       
+
+        if (event === 'SIGNED_IN' && session) {
+                // Assuming '/' is your authenticated route and Auth.tsx is on '/login'
+                router.push('/'); 
+            }
       }
     );
 
