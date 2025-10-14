@@ -23,6 +23,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         setSession(session);
         setUser(session?.user ?? null);
         setLoading(false);
+        
+        // Close OAuth popup if authentication was successful
+        if (event === 'SIGNED_IN' && session && window.opener && !window.opener.closed) {
+          window.close();
+        }
       }
     );
 
