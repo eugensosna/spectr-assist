@@ -52,7 +52,7 @@ export default function Auth() {
         data: { session },
       } = await supabase.auth.getSession();
       if (session) {
-        navigate("/", { replace: true });
+        navigate("/1", { replace: true });
       }
     };
     checkUser();
@@ -74,7 +74,7 @@ export default function Auth() {
         return;
       }
       if (isSignUp) {
-        const redirectUrl = `${window.location.origin}/`;
+        const redirectUrl = `${window.location.origin}/3`;
         const { data, error } = await supabase.auth.signUp({
           email,
           password,
@@ -131,7 +131,7 @@ export default function Auth() {
     try {
       setIsLoading(true);
       setError(null);
-      const redirectUrl = `${window.location.origin}/`;
+      const redirectUrl = `${window.location.origin}/2`;
       const { error } = await supabase.auth.signInWithOAuth({
         provider: "google",
         options: {
