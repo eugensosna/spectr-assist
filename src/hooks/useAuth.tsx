@@ -21,11 +21,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const {
       data: { subscription },
     } = supabase.auth.onAuthStateChange((event, session) => {
-      print(session.user)
       setSession(session);
       setUser(session?.user ?? null);
       setLoading(false);
-    }
+    });
+
     // THEN check for existing session
     // supabase.auth.getSession().then(({ data: { session } }) => {
     //   setSession(session);
