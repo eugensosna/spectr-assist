@@ -47,8 +47,10 @@ export default function Auth() {
     if (Object.keys(utmParams).length > 0) {
       sessionStorage.setItem('utm_params', JSON.stringify(utmParams));
     }
+  }, []);
 
-    // Check if user is already authenticated
+  // Separate effect for auth check to prevent race conditions
+  useEffect(() => {
     const checkUser = async () => {
       const {
         data: {
