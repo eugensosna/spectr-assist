@@ -78,7 +78,7 @@ export default function Auth() {
         return;
       }
       if (isSignUp) {
-        const redirectUrl = 'https://bot.storymapper.io/';
+        const redirectUrl =  `${window.location.origin}/`;
         const {
           data,
           error
