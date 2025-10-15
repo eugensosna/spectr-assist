@@ -49,21 +49,6 @@ export default function Auth() {
     }
   }, []);
 
-  // Separate effect for auth check to prevent race conditions
-  useEffect(() => {
-    const checkUser = async () => {
-      const {
-        data: {
-          session
-        }
-      } = await supabase.auth.getSession();
-      if (session) {
-        navigate("/", { replace: true });
-      }
-    };
-    checkUser();
-  }, [navigate]);
-
   const handleEmailAuth = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
